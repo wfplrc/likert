@@ -25,11 +25,11 @@ if (button) {
   message=document.getElementById("message").value;
   likert=document.getElementById("likert").value;
  }
-if (likert=="1") document.getElementById("MainMessage").innerHTML="You gave a rating of 1. Sorry you're unhappy";
-if (likert=="2") document.getElementById("MainMessage").innerHTML="You gave a rating of 2. Sorry you're not very happy";
-if (likert=="3") document.getElementById("MainMessage").innerHTML="You gave a rating of 3. I understand you have mixed feelings!";
-if (likert=="4") document.getElementById("MainMessage").innerHTML="You gave a rating of 4. Thank you!";;
-if (likert=="5") document.getElementById("MainMessage").innerHTML="You gave a rating of 5. Awesome!";
+if (likert=="1") document.getElementById("MainMessage").innerHTML="Sending your rating of 1. Sorry you're unhappy";
+if (likert=="2") document.getElementById("MainMessage").innerHTML="Sending your rating of 2. Sorry you're not very happy";
+if (likert=="3") document.getElementById("MainMessage").innerHTML="Sending your rating of 3. I understand you have mixed feelings!";
+if (likert=="4") document.getElementById("MainMessage").innerHTML="Sending your rating of 4. Thank you!";;
+if (likert=="5") document.getElementById("MainMessage").innerHTML="Sending your rating of 5. Awesome!";
 
 
 var payload = "{\r\n   \"likert\": \""+ likert + "\",\r\n \"FBID\": \""+ FBID + "\" ,\r\n  \"message\": \""+ message + "\" \r\n }";
@@ -98,20 +98,21 @@ function borders() {
 
   </head>
 <body>
-	<H1>Thank you for providing feedback</H1>
+	
 	<input type="hidden" id="likert" name="likert" value="0">
-	<H1 name="MainMessage" id="MainMessage">Sorry, but this does not work with Android or IE browsers.<BR>Please use Chrome, Safari, Edge or Firefox.</h1>
+	<H1>WFP Library and Research Centre – Rating page</H1><BR>
+	<H2 name="MainMessage" id="MainMessage">Sorry, but this does not work with Android or IE browsers.<BR>Please use Chrome, Safari, Edge or Firefox.</h2>
 	<BR>
-	<h2 name="StatusMessage" id="StatusMessage">&nbsp;</h2>   
+	<h3 name="StatusMessage" id="StatusMessage">&nbsp;</h3>   
 	<BR>
 	<div name="ReviewForm" id="ReviewForm" visibility="hidden">        
-	<HR><BR><BR>If you like, edit your rating and send a message to the LRC, or just close this window.<BR><BR>
+	<HR><BR><BR>You can change your rating or send a short message to the LRC. Remember to click <i>Send</i>.<BR>We appreciate your feedback.<BR><BR>
 	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493250/icons/likert%20scale/1.png" style="border:1px solid white" name="1star" id="1star" onclick="rateit(1);">
 	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493251/icons/likert%20scale/2.png" style="border:1px solid white" name="2star" id="2star" onclick="rateit(2);">
 	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493251/icons/likert%20scale/3.png" style="border:1px solid white" name="3star" id="3star" onclick="rateit(3);">
 	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493251/icons/likert%20scale/4.png" style="border:1px solid white" name="4star" id="4star" onclick="rateit(4);">
 	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493251/icons/likert%20scale/5.png" style="border:1px solid white" name="5star" id="5star" onclick="rateit(5);">
-	<br><br>Type a message here, if you like<BR><textarea name="message" id="message" rows="3" cols="30"></textarea><br><input type="submit" value="Update your feedback" onclick="postit(true);"><br>
+	<br><br>Add a message if you like<BR><textarea name="message" id="message" rows="3" cols="30"></textarea><br><input type="submit" value="Send" onclick="postit(true);"><input type="submit" value="Close" onclick="close();">
 
 	</div>
 
