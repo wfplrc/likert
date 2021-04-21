@@ -21,6 +21,7 @@
 	
 function postit(button)
 {
+document.getElementById('ReviewForm').style.display='none';	
 if (button) {
   message=document.getElementById("message").value;
   likert=document.getElementById("likert").value;
@@ -92,7 +93,7 @@ function borders() {
   document.getElementById("4star").style.borderColor="#FFFFFF";
   document.getElementById("5star").style.borderColor="#FFFFFF";
   document.getElementById(e).style.borderColor="#D0D0D0";	
- /// document.getElementById('ReviewForm').style.display='none';	
+ 
 }	
 </script> 
 
