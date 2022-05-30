@@ -1,123 +1,38 @@
 <!DOCTYPE html>
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <head>
-    <title>Feedback to LRC</title>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css"><!DOCTYPE html>
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <head>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Author: George Mu'ammar george.muammar@wfp.org -->  
     <title>Feedback to LRC</title>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
-        var message="";
-        var likert="";
-        var FBID="";
-	  
-	
-function postit(button)
-{
-document.getElementById('ReviewForm').style.display='none';	
-if (button) {
-  message=document.getElementById("message").value;
-  likert=document.getElementById("likert").value;
- }
-if (likert=="1") document.getElementById("MainMessage").innerHTML="You gave us 1 star. Sorry you're unhappy";
-if (likert=="2") document.getElementById("MainMessage").innerHTML="You gave us 2 stars. Sorry you're not all that happy";
-if (likert=="3") document.getElementById("MainMessage").innerHTML="You gave us 3 stars. I understand you have mixed feelings!";
-if (likert=="4") document.getElementById("MainMessage").innerHTML="You gave us 4 stars. Thank you!";
-if (likert=="5") document.getElementById("MainMessage").innerHTML="You gave us 5 stars. Awesome!";
-
-
-var payload = "{\r\n   \"likert\": \""+ likert + "\",\r\n \"FBID\": \""+ FBID + "\" ,\r\n  \"message\": \""+ message + "\" \r\n }";
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://prod-32.westeurope.logic.azure.com:443/workflows/dbd1867136824192aa94431ef8319b7c/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vrmv7Fe8WjjUhJdr0TQ3fHz5aC25YH3S4wCF9iEYb-c",
-  "method": "POST",
-    beforeSend: function(){
-		document.getElementById("StatusMessage").innerHTML="Sending your rating to the LRC. This will take a few seconds...";
-        },
-        success: function(data) {
-		console.log("success: "+data.responseText);
-		document.getElementById("StatusMessage").innerHTML=data.responseText;
-		document.getElementById('ReviewForm').style.display='block';
-        },				
-		error: function(data,statustext) {
-		console.log("error: "+data.responseText);
-		document.getElementById("StatusMessage").innerHTML=data.responseText;
-		document.getElementById('ReviewForm').style.display='block';
-
-			},
-
-     dataType: "json",
-	 
-  "headers": {
-    "Content-Type": "application/json",
-    "cache-control": "no-cache"
-  },
-  "processData": false,
-  "data": payload
-};
-
-$.ajax(settings);
-}
-
-function startit() {
-document.getElementById("StatusMessage").innerHTML="Thank you for providing feedback"
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-likert = urlParams.get('likert');
-FBID = urlParams.get('FBID');
-var message="";
-postit(false);
-document.getElementById("likert").value = likert;
-}
-
-function rateit(l) {
-  document.getElementById("likert").value = l;
-///  document.getElementById("StatusMessage").innerHTML="Click the button to send your update";
-  borders();
-}
-
-function borders() {
-  var e;
-  e  = document.getElementById("likert").value + "star";
-  document.getElementById("1star").style.borderColor="#FFFFFF";
-  document.getElementById("2star").style.borderColor="#FFFFFF";
-  document.getElementById("3star").style.borderColor="#FFFFFF";
-  document.getElementById("4star").style.borderColor="#FFFFFF";
-  document.getElementById("5star").style.borderColor="#FFFFFF";
-  document.getElementById(e).style.borderColor="#D0D0D0";	
- 
-}	
-</script> 
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('8 9="";8 2="";8 e="";8 g="";b 12(Q){i(Q){9=4.3("9").p;4.3("f").6="U V W Z X";2=4.3("2").p;4.3(\'u\').K.J=\'1j\'}i(1l(2)){4.3("f").6="B\'t D y a P O. I\'E F G H, w\'s C x d v q..."}1m{i(A(2)<1||A(2)>5)4.3("f").6="B\'t D y a P O. I\'E F G H, w\'s C x d v q...";i(14(2)!==A(2))4.3("f").6="B\'t D y 1r 1q. I\'E F G H, w\'s C x d v q..."}8 k="{\\r\\n   \\"2\\": \\""+2+"\\",\\r\\n \\"e\\": \\""+e+"\\",\\r\\n \\"g\\": \\""+g+"\\" ,\\r\\n  \\"9\\": \\""+9+"\\" \\r\\n }";o.m("k: "+k);8 T={"1i":L,"1b":L,"15":"16://17-18.1a.19.1c.1d:1e/1f/1v/1n/1w/1P/1T?1U-1V=1W-1X-1Y&1Z=%1S%20%21&22=1.0&23=24-c","1R":"1G",1Q:b(){4.3("l").6="1z 1A 1B 1C d 1D... 1E 1x\'t 1F d 1H."},M:b(7){o.m("M: "+7.j);4.3("l").6=7.j;4.3(\'u\').K.J=\'R\'},N:b(7,1J){o.m("N: "+7.j);4.3("l").6=7.j;4.3(\'u\').K.J=\'R\'},1u:"10","1O":{"1N-1M":"1L/10","S-1K":"1I-S"},"1y":13,"7":k};$.1g(T)}b 1h(){4.3("f").6="U V W Z X"Y 11=1o.1p.1s;Y h=1t 1k(11);2=h.z(\'2\');e=h.z(\'e\');g=h.z(\'g\');8 9="";12(13);4.3("2").p=2}',62,129,'||likert|getElementById|document||innerHTML|data|var|message||function||the|SID|ErrorMessage|UID|urlParams|if|responseText|payload|StatusMessage|log||console|value|replies||||ReviewForm|Bot|let|what|like|get|parseInt|Doesn|see|look|ll|send|it|anyway||display|style|true|success|error|number|valid|button|block|cache|settings|Thank|you|for|feedback|const|providing|json|queryString|postit|false|parseFloat|url|https|prod|32|logic|westeurope|crossDomain|azure|com|443|workflows|ajax|startit|async|none|URLSearchParams|isNaN|else|triggers|window|location|integer|an|search|new|dataType|dbd1867136824192aa94431ef8319b7c|manual|don|processData|Sending|your|review|to|LRC|please|close|POST|browser|no|statustext|control|application|Type|Content|headers|paths|beforeSend|method|2Ftriggers|invoke|api|version|2016|06|01|sp|2Fmanual|2Frun|sv|sig|vrmv7Fe8WjjUhJdr0TQ3fHz5aC25YH3S4wCF9iEYb'.split('|'),0,{}))
+</script>
 
   </head>
 <body>
-	
-	<input type="hidden" id="likert" name="likert" value="0">
-	<H1>WFP Library and Research Centre – Rating page</H1><BR>
-	<H2 name="MainMessage" id="MainMessage">Sorry, but this does not work with Android or IE browsers.<BR>Please use Chrome, Safari, Edge or Firefox.</h2>
-	<BR>
-	<h3 name="StatusMessage" id="StatusMessage">&nbsp;</h3>   
-	<BR>
-	<div name="ReviewForm" id="ReviewForm" visibility="hidden">        
-	<HR><BR><BR>You can change your rating or send a short message to the LRC. Remember to click <i>Send</i>.<BR>We appreciate your feedback.<BR><BR>
-	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493250/icons/likert%20scale/1.png" style="border:1px solid white" name="1star" id="1star" onclick="rateit(1);">
-	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493251/icons/likert%20scale/2.png" style="border:1px solid white" name="2star" id="2star" onclick="rateit(2);">
-	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493251/icons/likert%20scale/3.png" style="border:1px solid white" name="3star" id="3star" onclick="rateit(3);">
-	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493251/icons/likert%20scale/4.png" style="border:1px solid white" name="4star" id="4star" onclick="rateit(4);">
-	<img src="https://res.cloudinary.com/wfplrc/image/upload/v1615493251/icons/likert%20scale/5.png" style="border:1px solid white" name="5star" id="5star" onclick="rateit(5);">
-	<br><br>Add a message if you like<BR><textarea name="message" id="message" rows="3" cols="30"></textarea><br><input type="submit" value="Send" onclick="postit(true);"><input type="submit" value="Close" onclick="window.close();">
+<table border="0"><tr><td><img src="https://res.cloudinary.com/wfplrc/image/upload/c_scale,w_225/v1634070601/LRC%20Website/WFPnewlogo_english_standard_BLUE_RGB.png"></td><td><font size="6" face="Open Sans">Library and Research Centre<BR>Feedback System</td></tr></table>
+<h1 name="ErrorMessage" id="ErrorMessage">Thank you for providing feedback</h1>
+<br>
 
-	</div>
+<h2 name="StatusMessage" id="StatusMessage">Your browser does not support Javascript. Sorry, this won't work</h2>   
+<div id="loading">&nbsp;</div>
+<div name="ReviewForm" id="ReviewForm" visibility="hidden" style="display: block;">        
+<hr><br><br>If you like, take a minute to provide a more accurate rating and send a message to the LRC<br><br>Enter your rating (1-5) 
+<select id="likert" name="likert" size="1">
+<option value="5">5 - Excellent</option>
+<option value="4">4 - Good</option>
+<option value="3">3 - Mixed Feelings</option>
+<option value="2">2 - Bad</option>
+<option value="1">1 - Terrible</option>
+</select>
+	<br><br>Send us a message. Why did you chose this rating?<<br><textarea name="message" id="message" rows="3" cols="30"></textarea><br><input type="submit" value="Update your feedback" onclick="postit(true);"><br>
+</div>
+</div>
 
 <script>
-  startit();
-  borders();
+document.getElementById('ReviewForm').style.display='none';
+startit();
 </script>
+</body></html>
